@@ -1,5 +1,3 @@
-package newbank.server;
-
 public class Account {
 	
 	private String accountName;
