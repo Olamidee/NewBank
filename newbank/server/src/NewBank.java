@@ -1,5 +1,3 @@
-package newbank.server;
-
 import java.util.HashMap;
 
 public class NewBank {
