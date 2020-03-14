@@ -1,4 +1,4 @@
-//package newbank.client;
+package newbank.client;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -53,5 +53,6 @@ public class ExampleClient extends Thread{
 	
 	public static void main(String[] args) throws UnknownHostException, IOException, InterruptedException {
 		new ExampleClient("localhost",14002).start();
+
 	}
 }
