@@ -9,11 +9,11 @@ public class Customer {
 	}
 	
 	public String accountsToString() {
-		String s = "";
+		StringBuilder s = new StringBuilder();
 		for(Account a : accounts) {
-			s += a.toString();
+			s.append(a.toString());
 		}
-		return s;
+		return s.toString();
 	}
 
 	public void addAccount(Account account) {
