@@ -17,6 +17,7 @@ public class NewBank {
 		
 		Customer christina = new Customer();
 		christina.addAccount(new Account("Savings", 1500.0));
+		christina.addAccount(new Account("Checking", 504000.00));
 		customers.put("Christina", christina);
 		
 		Customer john = new Customer();

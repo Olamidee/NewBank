@@ -12,11 +12,11 @@ public class Customer {
 	
 	//Converts all Accounts in the ArrayList to String and returns the result
 	public String accountsToString() {
-		String s = "";
+		StringBuilder s = new StringBuilder();
 		for(Account a : accounts) {
-			s += a.toString();
+			s.append(a.toString());
 		}
-		return s;
+		return s.toString();
 	}
 
 	//Adds the specified Account to the Customer's ArrayList of Accounts
