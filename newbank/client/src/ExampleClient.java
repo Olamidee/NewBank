@@ -1,5 +1,5 @@
 //Imports the project package on the client side
-package newbank.client;
+
 
 //Java imports
 import java.io.BufferedReader;
