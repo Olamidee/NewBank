@@ -5,15 +5,18 @@ public class Account {
 	private String accountName;
 	//declares double variable called opening balance
 	private double openingBalance;
+	//declare String variable called password
+	private String password;
 
 
 	/*
 	* defines public method called Account which accepts parameters defined above (accountName/openingBalance)
 	* sets local variables (right) to the value of instance variables (left)
 	*  */
-	public Account(String accountName, double openingBalance) {
+	public Account(String accountName, double openingBalance, String password) {
 		this.accountName = accountName;
 		this.openingBalance = openingBalance;
+		this.password = password;
 	}
 
 	/*
@@ -21,7 +24,7 @@ public class Account {
 	openeingBalance, separated by a semi colon
 	 */
 	public String toString() {
-		return (accountName + ": " + openingBalance);
+		return (accountName + ": " + openingBalance + ":" + password);
 	}
 
 }
