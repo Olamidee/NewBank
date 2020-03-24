@@ -38,8 +38,8 @@ public class NewBank {
 		return null;
 	}
 
-	public synchronized CustomerID checkPassword (String password) {
-		if (customers.containsKey(password)){
+	public synchronized CustomerID checkPassword (String password, String username) {
+		if (customers.containsKey(username)){
 			return new CustomerID(password);
 		}
 		return null;
