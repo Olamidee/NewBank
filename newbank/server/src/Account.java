@@ -19,15 +19,11 @@ public class Account {
 	//declares a list of transactions
 	private List<Transaction> transactions;
 
-	//declare String variable called password
-	private String password;
-
-
 	/*
 	* defines public method called Account which accepts parameters defined above (accountName/spot)
 	* sets local variables (right) to the value of instance variables (left)
 	*  */
-	public Account(String accountName, double openingBalance, String password) {
+	public Account(String accountName, double openingBalance) {
 		this.accountName = accountName;
 		this.spot = openingBalance;
 		this.uniqueId = UUID.randomUUID();
@@ -53,7 +49,7 @@ public class Account {
 	openeingBalance, separated by a semi colon
 	 */
 	public String toString() {
-		return (accountName + ": " + spot + ":" + password);
+		return (accountName + ": " + spot);
 	}
 
 	public String getDetailedString() {

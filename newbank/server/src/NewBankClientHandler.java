@@ -23,7 +23,7 @@ public class NewBankClientHandler extends Thread{
 			// ask for user name
 			out.println(" welcome to NewBank please enter your username");
 			String userName = in.readLine();
-			CustomerID customer = bank.checkLogInDetails(userName);
+			Customer customer = bank.checkLogInDetails(userName);
 			if (customer != null) {
 				out.println("welcome " + userName);
 
@@ -39,14 +39,14 @@ public class NewBankClientHandler extends Thread{
 			out.println("Checking Details...");
 			// authenticate user and get customer ID token from bank for use in subsequent requests
 
-			CustomerID passWord = bank.checkPassword(password, userName);
+			Boolean validPassword = bank.checkPassword(customer, password);
 			// if the user is authenticated then get requests from the user and process them 
-			if(passWord != null) {
+			if(validPassword == true) {
 				out.println("Log In Successful. What do you want to do?");
 				while(true) {
 					String request = in.readLine();
-					System.out.println("Request from " + customer.getKey());
-					String responce = bank.processRequest(customer, request);
+					System.out.println("Request from " + userName);
+					String responce = bank.processRequest(userName, request);
 					out.println(responce);
 				}
 			}
