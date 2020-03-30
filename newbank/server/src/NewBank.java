@@ -45,8 +45,8 @@ public class NewBank {
 				case "SHOWMYACCOUNTS" : 
 					return showMyAccounts(username);
 			
-					default : 
-						return "FAIL";
+				default : 
+					return "FAIL";
 			}
 		}
 		return "FAIL";
