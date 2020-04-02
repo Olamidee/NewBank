@@ -1,8 +1,6 @@
 import java.util.UUID;
 import java.time.Instant;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 public class Transaction {
     private Double value;
