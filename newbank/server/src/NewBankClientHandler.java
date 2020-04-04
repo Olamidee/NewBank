@@ -92,7 +92,8 @@ public class NewBankClientHandler extends Thread{
 			// if the user is authenticated then get requests from the user and process them 
 			if(passWord != null) {
 				out.println("Log In Successful.");
-
+				out.println("V:  VIEW YOUR ACCOUNTS\n W:  MAKE A WITHDRAWAL\n D:  MAKE A DEPOSIT\n T:  MAKE A TRANSFER");
+				out.println("Please enter the letter assigned to the option you would like to select (or enter ? for more instructions): ");
 
 				while(true) {
 					String request = in.readLine();
