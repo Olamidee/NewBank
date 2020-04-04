@@ -2,6 +2,8 @@ import jdk.dynalink.beans.StaticClass;
 
 import java.util.HashMap;
 
+import java.util.Scanner;
+
 public class NewBank {
 	
 	private static final NewBank bank = new NewBank();
@@ -49,7 +51,14 @@ public class NewBank {
 	public synchronized String processRequest(CustomerID customer, String request) {
 		if(customers.containsKey(customer.getKey())) {
 			switch(request) {
-			case "SHOWMYACCOUNTS" : return showMyAccounts(customer);
+			case "V" : return showMyAccounts(customer);
+
+			case "?" : return " In order to choose an option you must enter its assigned letter.\n The assigned letter is located left of the colon that precedes each option.\n" +
+						"\n As an example...\n To choose the option 'View your account' you would enter 'V'\n Enter the assigned letter of your choice: ";
+
+			case "W" : //TODO
+			case "D" : //TODO
+
 			default : return "FAIL";
 			}
 		}
@@ -59,5 +68,7 @@ public class NewBank {
 	private String showMyAccounts(CustomerID customer) {
 		return (customers.get(customer.getKey())).accountsToString();
 	}
+
+
 
 }
