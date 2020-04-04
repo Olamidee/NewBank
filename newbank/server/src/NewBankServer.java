@@ -3,7 +3,8 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class NewBankServer extends Thread{
-	
+
+
 	private ServerSocket server;
 	
 	public NewBankServer(int port) throws IOException {
@@ -31,10 +32,13 @@ public class NewBankServer extends Thread{
 			}
 		}
 	}
+
+
 	
 	public static void main(String[] args) throws IOException {
 		// starts a new NewBankServer thread on a specified port number
 		new NewBankServer(14002).start();
 		//System.out.println(" new bank server test");
+
 	}
 }

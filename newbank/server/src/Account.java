@@ -29,6 +29,7 @@ public class Account {
 		this.uniqueId = UUID.randomUUID();
 		this.creationDate = Date.from(Instant.now());
 		this.transactions = new ArrayList<Transaction>();
+		//this.password = password;
 	}
 
 	public void Deposit(Double amount){
@@ -46,11 +47,14 @@ public class Account {
 
 	/*
 	Defines a public method called toString which returns a String value of accountName and
-	openeingBalance, separated by a semi colon
+	openingBalance, separated by a semi colon
 	 */
 	public String toString() {
 		return (accountName + ": " + spot);
 	}
+
+	//public String passwordString() {return password;}
+
 
 	public String getDetailedString() {
 		return (accountName + ", " + creationDate + ", " + uniqueId + ": " + spot);
@@ -63,5 +67,7 @@ public class Account {
 	public void getHistoryOfTransactions(){
 		for (Transaction t : transactions) System.out.println(t.toString());
 	}
+
+	//Account
 
 }

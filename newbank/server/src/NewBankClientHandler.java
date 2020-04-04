@@ -9,6 +9,7 @@ public class NewBankClientHandler extends Thread{
 	private NewBank bank;
 	private BufferedReader in;
 	private PrintWriter out;
+	Admin a = new Admin();
 	
 	
 	public NewBankClientHandler(Socket s) throws IOException {
@@ -18,12 +19,60 @@ public class NewBankClientHandler extends Thread{
 	}
 	
 	public void run() {
+
+
 		// keep getting requests from the client and processing them
 		try {
+
+
 			// ask for user name
 			out.println(" welcome to NewBank please enter your username");
 			String userName = in.readLine();
-			Customer customer = bank.checkLogInDetails(userName);
+			if (userName.equals("ADMIN")) {
+
+				out.println("welcome to Admin log in..");
+				out.println("please enter the number of the option you would like to select");
+
+				out.println("1:  Enter new user ");
+				out.println("2:  adjust new user details");
+				out.println("3:  delete user details");
+
+				String adminInput = in.readLine();
+
+				switch (adminInput) {
+					case "1":
+						out.println("you have selected 1 to enter a new user");
+						out.println("enter a new username...");
+						String newUsernameInput = in.readLine();
+
+						out.println("enter a new password..");
+						String newUserPassword = in.readLine();
+
+						out.println("enter a new security question");
+						String newUserSecurityQuestion = in.readLine();
+
+						a.adminEnterNewUser(newUsernameInput, newUserPassword,newUserSecurityQuestion);
+
+						out.println("new user has now been entered ");
+						break;
+					case "2":
+						//change user details method
+						break;
+					case "3":
+						//delete user method
+						break;
+					default:
+						out.println("default");
+				}
+
+
+			}else{
+				out.println("nonadmin");
+			}
+
+
+
+			CustomerID customer = bank.checkLogInDetails(userName);
 			if (customer != null) {
 				out.println("welcome " + userName);
 
@@ -39,14 +88,14 @@ public class NewBankClientHandler extends Thread{
 			out.println("Checking Details...");
 			// authenticate user and get customer ID token from bank for use in subsequent requests
 
-			Boolean validPassword = bank.checkPassword(customer, password);
+			CustomerID passWord = bank.checkPassword(password, userName);
 			// if the user is authenticated then get requests from the user and process them 
-			if(validPassword == true) {
+			if(passWord != null) {
 				out.println("Log In Successful. What do you want to do?");
 				while(true) {
 					String request = in.readLine();
-					System.out.println("Request from " + userName);
-					String responce = bank.processRequest(userName, request);
+					System.out.println("Request from " + customer.getKey());
+					String responce = bank.processRequest(customer, request);
 					out.println(responce);
 				}
 			}

@@ -1,3 +1,5 @@
+import jdk.dynalink.beans.StaticClass;
+
 import java.util.HashMap;
 
 public class NewBank {
@@ -12,16 +14,16 @@ public class NewBank {
 	}
 	
 	private void addTestData() {
-		Customer bhagy = new Customer("password01");
-		bhagy.addAccount(new Account("Main", 1000.0));
+		Customer bhagy = new Customer();
+		bhagy.addAccount(new Account("Main", 1000.0/*, "password01"*/));
 		customers.put("Bhagy", bhagy);
 		
-		Customer christina = new Customer("password02");
-		christina.addAccount(new Account("Savings", 1500.0));
+		Customer christina = new Customer();
+		christina.addAccount(new Account("Savings", 1500.0 /*, "password02"*/));
 		customers.put("Christina", christina);
 		
-		Customer john = new Customer("password03");
-		john.addAccount(new Account("Checking", 250.0));
+		Customer john = new Customer();
+		john.addAccount(new Account("Checking", 250.0/*, "password03"*/));
 		customers.put("John", john);
 	}
 	
@@ -29,31 +31,33 @@ public class NewBank {
 		return bank;
 	}
 	
-	public synchronized Customer checkLogInDetails(String userName) {
-		return customers.get(userName);
-
+	public synchronized CustomerID checkLogInDetails(String userName) {
+		if(customers.containsKey(userName)) {
+			return new CustomerID(userName);
+		}
+		return null;
 	}
 
-	public synchronized Boolean checkPassword (Customer c, String pwd) {
-		return c.isValidPwd(pwd);
+	public synchronized CustomerID checkPassword (String password, String username) {
+		if (customers.containsKey(username)){
+			return new CustomerID(password);
+		}
+		return null;
 	}
 
 	// commands from the NewBank customer are processed in this method
-	public synchronized String processRequest(String username, String request) {
-		if(customers.containsKey(username)) {
+	public synchronized String processRequest(CustomerID customer, String request) {
+		if(customers.containsKey(customer.getKey())) {
 			switch(request) {
-				case "SHOWMYACCOUNTS" : 
-					return showMyAccounts(username);
-			
-				default : 
-					return "FAIL";
+			case "SHOWMYACCOUNTS" : return showMyAccounts(customer);
+			default : return "FAIL";
 			}
 		}
 		return "FAIL";
 	}
 	
-	private String showMyAccounts(String username) {
-		return (customers.get(username)).accountsToString();
+	private String showMyAccounts(CustomerID customer) {
+		return (customers.get(customer.getKey())).accountsToString();
 	}
 
 }
