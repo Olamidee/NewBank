@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cd23909f-041f-4107-bd7d-1ef2b48945ac" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_8_0_191.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/newbank/server/src/Admin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/newbank/server/src/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/newbank/server/src/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/newbank/server/src/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/newbank/server/src/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/newbank/server/src/NewBank.java" beforeDir="false" afterPath="$PROJECT_DIR$/newbank/server/src/NewBank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/newbank/server/src/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/newbank/server/src/Admin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/newbank/server/src/NewBankClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/newbank/server/src/NewBankClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/newbank/server/src/NewBankServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/newbank/server/src/NewBankServer.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,12 +16,31 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
+  <component name="DockManager">
+    <window id="1">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/newbank/server/src/Admin.java">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="311">
+                    <caret line="170" lean-forward="true" selection-start-line="170" selection-end-line="170" />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/newbank/server/src/NewBankServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
+            <state relative-caret-position="525">
               <caret line="35" selection-start-line="35" selection-end-line="35" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -35,10 +49,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/newbank/client/src/ExampleClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
+            <state relative-caret-position="397">
               <caret line="42" column="27" selection-start-line="42" selection-start-column="27" selection-end-line="42" selection-end-column="27" />
               <folding>
                 <element signature="e#0#2072#0" expanded="true" />
@@ -51,8 +65,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/newbank/server/src/NewBankClientHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="762">
-              <caret line="68" column="18" selection-start-line="68" selection-start-column="18" selection-end-line="68" selection-end-column="18" />
+            <state relative-caret-position="798">
+              <caret line="187" column="32" selection-start-line="187" selection-start-column="32" selection-end-line="187" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -74,15 +88,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
               <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/newbank/server/src/Admin.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-118">
-              <caret line="6" column="46" lean-forward="true" selection-start-line="6" selection-start-column="46" selection-end-line="6" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -152,17 +157,19 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1" />
-    <option name="y" value="35" />
-    <option name="width" value="2560" />
-    <option name="height" value="1337" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="1023" />
+    <option name="y" value="23" />
+    <option name="width" value="1537" />
+    <option name="height" value="1336" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -192,8 +199,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -276,14 +281,21 @@
       <option name="project" value="LOCAL" />
       <updated>1585077645800</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="begginning of log in process asks for username,, if the username is in testdata (will be an ArrayList in future) then asks for a password that is associated with that customer,, wroking on this currently">
+      <created>1586011649223</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1586011649223</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="2560" height="1337" extended-state="0" />
+    <frame x="1023" y="23" width="1537" height="1336" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18864179" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1812709" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -292,8 +304,8 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32931727" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.31646585" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.114893615" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.18488745" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.11414791" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -374,38 +386,10 @@
     <entry file="file://$PROJECT_DIR$/newbank/client/.classpath">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/newbank/server/src/NewBankServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="35" selection-start-line="35" selection-end-line="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/newbank/client/src/ExampleClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="42" column="27" selection-start-line="42" selection-start-column="27" selection-end-line="42" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#2072#0" expanded="true" />
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/newbank/server/src/CustomerID.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" column="20" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/newbank/server/src/Customer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -443,11 +427,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/newbank/server/src/Customer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/newbank/server/src/NewBankClientHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="762">
-          <caret line="68" column="18" selection-start-line="68" selection-start-column="18" selection-end-line="68" selection-end-column="18" />
+        <state relative-caret-position="798">
+          <caret line="187" column="32" selection-start-line="187" selection-start-column="32" selection-end-line="187" selection-end-column="32" />
           <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/newbank/server/src/NewBankServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="35" selection-start-line="35" selection-end-line="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/newbank/client/src/ExampleClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="397">
+          <caret line="42" column="27" selection-start-line="42" selection-start-column="27" selection-end-line="42" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#2072#0" expanded="true" />
             <element signature="imports" expanded="true" />
           </folding>
         </state>
@@ -455,8 +467,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/newbank/server/src/Admin.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-118">
-          <caret line="6" column="46" lean-forward="true" selection-start-line="6" selection-start-column="46" selection-end-line="6" selection-end-column="46" />
+        <state relative-caret-position="311">
+          <caret line="170" lean-forward="true" selection-start-line="170" selection-end-line="170" />
         </state>
       </provider>
     </entry>

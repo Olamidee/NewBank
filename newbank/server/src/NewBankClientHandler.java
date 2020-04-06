@@ -10,6 +10,193 @@ public class NewBankClientHandler extends Thread{
 	private BufferedReader in;
 	private PrintWriter out;
 	Admin a = new Admin();
+
+	private void adminLogin (String input) {
+
+		try {
+
+			if (input.equals("ADMIN")) {
+
+				out.println("welcome to Admin log in...");
+				out.println("Please enter ADMIN password...");
+
+				String adminPass = in.readLine();
+				if (a.adminPasswordCheck(adminPass)) {
+					out.println("ADMIN log in successful...");
+					out.println("please enter the number of the option you would like to select");
+
+					out.println("1:  Enter new user ");
+					out.println("2:  adjust new user details");
+					out.println("3:  delete user details");
+					out.println("4:  Logout");
+
+					String adminInput = in.readLine();
+
+					switch (adminInput) {
+						case "1":
+							adminCaseOne();
+							break;
+						case "2":
+							//change user details method
+							adminCaseTwo();
+							break;
+						case "3":
+							//delete user method
+							 adminCaseThree();
+							break;
+						case "4":
+							out.println("ADMIN log out successful..");
+							run();
+							break;
+
+						default:
+							out.println("default");
+					}
+
+
+				}
+
+
+			} else {
+				out.println("nonadmin");
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	String usernameToUpdate;
+
+	private void adminCaseOne() {
+
+		try {
+			out.println("you have selected 1 to enter a new user");
+			out.println("enter a new username...");
+			String newUsernameInput = in.readLine();
+
+			out.println("enter a new password..");
+			String newUserPassword = in.readLine();
+
+			out.println("enter a new security question");
+			String newUserSecurityQuestion = in.readLine();
+
+			a.adminEnterNewUser(newUsernameInput, newUserPassword, newUserSecurityQuestion);
+
+			out.println("new user has now been entered ");
+
+		}catch (IOException e){
+			e.printStackTrace();
+		}
+
+	}
+
+
+
+	private void adminCaseTwo() {
+
+		try{
+			out.println("please enter the username of the user you would like to update..");
+			usernameToUpdate = in.readLine();
+
+			String[] arr = a.displayCurrentDB(usernameToUpdate);
+
+			for (int i = 0; i <= arr.length-1; i++) {
+				out.println(arr[i]);
+
+			}
+
+			out.println("");
+
+			adminCaseTwoa();
+
+
+		}catch (IOException e){
+			e.printStackTrace();
+		}
+
+	}
+
+
+	private void adminCaseTwoa() {
+
+		try {
+			out.println("what would you like to change...");
+			out.println("1:  Username");
+			out.println("2:  Password");
+			out.println("3:  Security question answer");
+			String caseTwoInput = in.readLine();
+			switch (caseTwoInput) {
+				case "1":
+					//update username method
+					out.println("what would you like to change " + usernameToUpdate + " to...");
+					String usernameUpdate = in.readLine();
+					a.changeUserName(usernameToUpdate, usernameUpdate);
+
+					printDB();
+					break;
+				case "2":
+					//update password method
+					out.println("what would you like to change " + usernameToUpdate +"'s password to...");
+					String passwordUpdate = in.readLine();
+					a.changePassword(usernameToUpdate, passwordUpdate);
+
+					printDB();
+					break;
+				case "3":
+					//update security question answer
+					out.println("what would you like to change " + usernameToUpdate + "'s security question answer to...");
+					String securityQAnswer = in.readLine();
+					a.changeSecurityAnswer(usernameToUpdate, securityQAnswer);
+
+					printDB();
+					break;
+				default:
+					out.println("invalid input,, please try again...");
+					adminCaseTwoa();
+
+			}
+		}catch (IOException e){
+			e.printStackTrace();
+		}
+	}
+
+	private void adminCaseThree() {
+
+		try {
+
+			out.println("Please enter the name of the user you want to delete...");
+			String username = in.readLine();
+			out.println(" are you sure you want to delete " + username + "from the new bank system?");
+			out.println("1:  Yes");
+			out.println("2:  No");
+			String confirm = in.readLine();
+
+			switch (confirm) {
+				case "1":
+					a.deleteUser(username);
+					break;
+				case "2":
+					adminCaseTwoa();
+					break;
+				default:
+					out.println("please enter a valid option..");
+					adminCaseTwoa();
+			}
+		}catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	private void printDB () {
+		String[] arr = a.displayCurrentDB(usernameToUpdate);
+
+		for (int i = 0; i <= arr.length-1; i++) {
+			out.println(arr[i]);
+		}
+	}
 	
 	
 	public NewBankClientHandler(Socket s) throws IOException {
@@ -21,54 +208,20 @@ public class NewBankClientHandler extends Thread{
 	public void run() {
 
 
+
+
 		// keep getting requests from the client and processing them
 		try {
 
 
 			// ask for user name
 			out.println(" welcome to NewBank please enter your username");
+
+
 			String userName = in.readLine();
-			if (userName.equals("ADMIN")) {
-
-				out.println("welcome to Admin log in..");
-				out.println("please enter the number of the option you would like to select");
-
-				out.println("1:  Enter new user ");
-				out.println("2:  adjust new user details");
-				out.println("3:  delete user details");
-
-				String adminInput = in.readLine();
-
-				switch (adminInput) {
-					case "1":
-						out.println("you have selected 1 to enter a new user");
-						out.println("enter a new username...");
-						String newUsernameInput = in.readLine();
-
-						out.println("enter a new password..");
-						String newUserPassword = in.readLine();
-
-						out.println("enter a new security question");
-						String newUserSecurityQuestion = in.readLine();
-
-						a.adminEnterNewUser(newUsernameInput, newUserPassword,newUserSecurityQuestion);
-
-						out.println("new user has now been entered ");
-						break;
-					case "2":
-						//change user details method
-						break;
-					case "3":
-						//delete user method
-						break;
-					default:
-						out.println("default");
-				}
 
 
-			}else{
-				out.println("nonadmin");
-			}
+			adminLogin(userName);
 
 
 
