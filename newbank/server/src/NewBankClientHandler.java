@@ -57,8 +57,33 @@ public class NewBankClientHandler extends Thread{
 				}
 
 
+			} else if (a.userNameCheck(input)){
+
+				out.println("welcome " + input + " please enter your password");
+				String pWord = in.readLine();
+				if (a.customerPasswordCheck(input, pWord)) {
+					out.println("you have successfully logged in what would you like to do");
+
+					out.println("1:  logout");
+					String whatToDo = in.readLine();
+
+					switch (whatToDo) {
+						case "1":
+							run();
+							break;
+						default:
+							out.println("please select a valid option");
+					}
+
+				}else {
+					out.println("that password does not match the one we have for you, please try again");
+					run();
+				}
+
+
 			} else {
-				out.println("nonadmin");
+				out.println("we do not have that username in out database, please try again");
+				run();
 			}
 
 		} catch (IOException e) {

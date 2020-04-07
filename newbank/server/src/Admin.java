@@ -64,7 +64,32 @@ public class Admin {
         }
     }
 
+    public boolean customerPasswordCheck (String in, String pass) {
+
+        boolean enter = false;
+
+        try{
+
+            Connection conn = DriverManager.getConnection(dbURL, dbUsername, dbpassword);
+            Statement statement = conn.createStatement();
+            ResultSet result = statement.executeQuery(" SELECT password FROM newBankTable WHERE username =  '" + in + "'  ");
+
+            while(result.next()) {
+                String pWord = result.getString( "password");
+                if (pWord.equals(pass)) {
+                    enter = true;
+                }
+            }
+
+        }catch (SQLException e) {
+            System.out.println("something went wrong... " + e.getMessage() );
+        }
+
+        return enter;
+    }
+
     public boolean adminPasswordCheck (String in) {
+
 
         boolean enter = false;
 
