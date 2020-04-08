@@ -65,24 +65,55 @@ public class NewBankClientHandler extends Thread{
 					out.println("you have successfully logged in what would you like to do");
 
 					out.println("1:  logout");
+					out.println("2:  transfer money to another account");
+					out.println("3:  loan to another customer");
 					String whatToDo = in.readLine();
 
 					switch (whatToDo) {
 						case "1":
 							run();
 							break;
+						case "2":
+							out.println("method to transfer money to another account");
+							break;
+						case "3":
+							out.println("method to loan amount to another account");
+							break;
 						default:
 							out.println("please select a valid option");
 					}
 
 				}else {
-					out.println("that password does not match the one we have for you, please try again");
-					run();
+					out.println("that password does not match the one we have for you, please try again or answer a security");
+					out.println("1: try again");
+					out.println("2:  answer security question");
+					String caseInput = in.readLine();
+
+					switch (caseInput) {
+						case "1":
+							run();
+							break;
+						case "2":
+							out.println("what country do you live in?");
+							String country = in.readLine();
+
+							if (a.securityQCheck(input, country)) {
+								out.println("your details are as follows...");
+								printDB();
+							}
+							run();
+							break;
+						default:
+							out.println("please enter a valid input");
+							run();
+
+					}
+
 				}
 
 
 			} else {
-				out.println("we do not have that username in out database, please try again");
+				out.println("we do not have that username in our database, please try again");
 				run();
 			}
 
