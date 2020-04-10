@@ -47,7 +47,7 @@ public class ExampleClient extends Thread{
 		bankServerResponceThread.start();
 	}
 	
-//This methods sends a client requets to the server, to execute a user-defined command	
+//This methods sends a client requests to the server, to execute a user-defined command	
 
 	public void run() {
 		while(true) {

@@ -11,6 +11,77 @@ public class NewBankClientHandler extends Thread{
 	private PrintWriter out;
 	Admin a = new Admin();
 
+	public NewBankClientHandler(Socket s) throws IOException {
+		bank = NewBank.getBank();
+		in = new BufferedReader(new InputStreamReader(s.getInputStream()));
+		out = new PrintWriter(s.getOutputStream(), true);
+	}
+	
+	public void run() {
+
+		// keep getting requests from the client and processing them
+		try {
+
+			// ask for user name
+			out.println(" Welcome to NewBank please enter your username");
+
+			String userName = in.readLine();
+
+			adminLogin(userName);
+
+
+
+			CustomerID customer = bank.checkLogInDetails(userName);
+			if (customer != null) {
+				out.println("welcome " + userName);
+
+			}else {
+				out.println("we cannot find that username, please try again");
+				out.println("");
+				run();
+			}
+
+			// ask for password
+			out.println("Please enter your Password");
+			String password = in.readLine();
+			out.println("Checking Details...");
+			// authenticate user and get customer ID token from bank for use in subsequent requests
+
+			CustomerID passWord = bank.checkPassword(password, userName);
+			// if the user is authenticated then get requests from the user and process them 
+			if(passWord != null) {
+				out.println("Log In Successful.");
+				out.println("V:  VIEW YOUR ACCOUNTS\n W:  MAKE A WITHDRAWAL\n D:  MAKE A DEPOSIT\n T:  MAKE A TRANSFER");
+				out.println("Please enter the letter assigned to the option you would like to select (or enter ? for more instructions): ");
+
+				while(true) {
+					String request = in.readLine();
+					assert customer != null;
+					System.out.println("Request from " + customer.getKey());
+					System.out.println(" This is request: " + request);
+					String responce = bank.processRequest(customer, request.toUpperCase());
+					out.println(responce);
+				}
+			}
+			else {
+				out.println("Log In Failed");
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				in.close();
+				out.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+				Thread.currentThread().interrupt();
+			}
+		}
+	}
+
+	
+	
 	private void adminLogin (String input) {
 
 		try {
@@ -113,7 +184,7 @@ public class NewBankClientHandler extends Thread{
 
 
 			} else {
-				out.println("we do not have that username in our database, please try again");
+				out.println("we dooo not have that username in our database, please try again");
 				run();
 			}
 
@@ -255,79 +326,5 @@ public class NewBankClientHandler extends Thread{
 	}
 	
 	
-	public NewBankClientHandler(Socket s) throws IOException {
-		bank = NewBank.getBank();
-		in = new BufferedReader(new InputStreamReader(s.getInputStream()));
-		out = new PrintWriter(s.getOutputStream(), true);
-	}
 	
-	public void run() {
-
-
-
-
-		// keep getting requests from the client and processing them
-		try {
-
-
-			// ask for user name
-			out.println(" welcome to NewBank please enter your username");
-
-
-			String userName = in.readLine();
-
-
-			adminLogin(userName);
-
-
-
-			CustomerID customer = bank.checkLogInDetails(userName);
-			if (customer != null) {
-				out.println("welcome " + userName);
-
-			}else {
-				out.println("we cannot find that username, please try again");
-				out.println("");
-				run();
-			}
-
-			// ask for password
-			out.println("Please enter your Password");
-			String password = in.readLine();
-			out.println("Checking Details...");
-			// authenticate user and get customer ID token from bank for use in subsequent requests
-
-			CustomerID passWord = bank.checkPassword(password, userName);
-			// if the user is authenticated then get requests from the user and process them 
-			if(passWord != null) {
-				out.println("Log In Successful.");
-				out.println("V:  VIEW YOUR ACCOUNTS\n W:  MAKE A WITHDRAWAL\n D:  MAKE A DEPOSIT\n T:  MAKE A TRANSFER");
-				out.println("Please enter the letter assigned to the option you would like to select (or enter ? for more instructions): ");
-
-				while(true) {
-					String request = in.readLine();
-					assert customer != null;
-					System.out.println("Request from " + customer.getKey());
-					System.out.println(" This is request: " + request);
-					String responce = bank.processRequest(customer, request.toUpperCase());
-					out.println(responce);
-				}
-			}
-			else {
-				out.println("Log In Failed");
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		finally {
-			try {
-				in.close();
-				out.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-				Thread.currentThread().interrupt();
-			}
-		}
-	}
-
 }
