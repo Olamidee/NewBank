@@ -34,6 +34,12 @@ public class Admin {
             Connection conn = DriverManager.getConnection(dbURL, dbUsername, dbpassword);
             Statement statement = conn.createStatement();
             ResultSet result = statement.executeQuery( " SELECT * FROM newBankTable WHERE username = '" + userName + "'   ");
+            // "SELECT * FROM newBankTable WHERE username = ?");
+            // result = statement.setString(1, input);
+            // ResultSet result = statement.executeQuery();
+            // ', ", " or 1=1--, " UNION 1=1, 
+            
+            
 
             while(result.next()) {
 
